@@ -8,11 +8,13 @@ namespace AutomatedDataBackupUI
     public partial class Form1 : Form
     {
         private BackupScheduler _backupScheduler;
+        private BackupLog _logger;
 
         public Form1()
         {
             InitializeComponent();
-            _backupScheduler = new BackupScheduler();
+            _logger = new BackupLog();
+            _backupScheduler = new BackupScheduler(_logger);
         }
 
         private void btnStop_Click(object sender, EventArgs e)
