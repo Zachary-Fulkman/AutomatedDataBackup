@@ -1,9 +1,10 @@
-﻿using System;
+using System;
 using System.Timers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutomatedDataBackupUI;
 
 namespace AutomatedDataBackup
 {
@@ -12,9 +13,9 @@ namespace AutomatedDataBackup
         private System.Timers.Timer _timer;
         private BackupService _backupService;
 
-        public BackupScheduler()
+        public BackupScheduler(BackupLog logger)
         {
-            _backupService = new BackupService();
+            _backupService = new BackupService(logger);
             _timer = new System.Timers.Timer(3600000);
             _timer.Elapsed += OnElapsedTime;
             _timer.AutoReset = true;
