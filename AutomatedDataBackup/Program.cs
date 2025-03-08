@@ -1,10 +1,17 @@
-﻿namespace AutomatedDataBackup
+using System;
+using System.Windows.Forms;
+using AutomatedDataBackupUI;
+
+namespace AutomatedDataBackup
 {
-    internal class Program
+    static class Program
     {
-        static void Main(string[] args)
+        [STAThread]
+        static void Main()
         {
-            Console.WriteLine("Hello, World!");
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
         }
     }
 }
