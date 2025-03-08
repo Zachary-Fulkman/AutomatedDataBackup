@@ -1,19 +1,29 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutomatedDataBackupUI;
 
 namespace AutomatedDataBackup
 {
     class BackupService
     {
-        //Backs up data from a source directory to a destination directory
+        // Adding Logs
+        private readonly BackupLog _logger;
+        public BackupService(BackupLog logger)
+        {
+            _logger = logger;
+        }
+
+        //Backs up data from a source directory to a destination directory + Log Operation
         public void BackupData(string sourceDirectory, string backupDirectory)
         {
             try
             {
+                _logger.LogBackup("Backup started.");
+
                 // Tries to check if a source directory exists
                 if (Directory.Exists(sourceDirectory))
                 {
@@ -33,17 +43,18 @@ namespace AutomatedDataBackup
                         //Copies file to the backup
                         File.Copy(file, destinationPath, overwrite: true);
 
-                        Console.WriteLine($"Backed up {file} to {destinationPath}");
+                        _logger.LogBackup($"Backed up {file} to {destinationPath}");
                     }
+                    _logger.LogBackup("Backup Completed successfully.");
                 }
                 else
                 {
-                    Console.WriteLine("Source directory does not exist.");
+                    _logger.LogBackup("Source directory does not exist.");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error during backup: {ex.Message}");
+                _logger.LogBackup($"Error during backup: {ex.Message}");
             }
         }
     }
