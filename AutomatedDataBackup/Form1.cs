@@ -21,6 +21,16 @@ namespace AutomatedDataBackupUI
 
             //Fixed double DateTimePicker
 
+            // Set range for days of week (0 = Sunday, 6 = Saturday)
+numericUpDownDayOfWeek.Minimum = 0;
+numericUpDownDayOfWeek.Maximum = 6;
+numericUpDownDayOfWeek.Value = 1; // Default to Monday
+
+// Set range for days of month (1–31)
+numericUpDownDayOfMonth.Minimum = 1;
+numericUpDownDayOfMonth.Maximum = 31;
+numericUpDownDayOfMonth.Value = 1; // Default to 1st of the month
+
             _backupTimer = new System.Windows.Forms.Timer();
             _backupTimer.Interval = 60000; // Check every minute
             _backupTimer.Tick += BackupTimer_Tick;
