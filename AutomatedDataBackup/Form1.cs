@@ -19,12 +19,7 @@ namespace AutomatedDataBackupUI
             _backupScheduler = new BackupScheduler(_logger);
             _backupScheduler.Start();
 
-            dateTimePickerTime = new DateTimePicker();
-            dateTimePickerTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            dateTimePickerTime.ShowUpDown = false;
-            dateTimePickerTime.Location = new System.Drawing.Point(20, 60);
-            dateTimePickerTime.Size = new System.Drawing.Size(150, 20);
-            this.Controls.Add(dateTimePickerTime);
+            //Fixed double DateTimePicker
 
             _backupTimer = new System.Windows.Forms.Timer();
             _backupTimer.Interval = 60000; // Check every minute
