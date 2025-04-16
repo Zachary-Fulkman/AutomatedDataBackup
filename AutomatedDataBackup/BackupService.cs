@@ -8,7 +8,7 @@ using AutomatedDataBackupUI;
 
 namespace AutomatedDataBackup
 {
-    class BackupService
+    public class BackupService
     {
         // Adding Logs
         private readonly BackupLog _logger;
