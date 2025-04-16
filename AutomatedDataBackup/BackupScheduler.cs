@@ -8,7 +8,7 @@ using AutomatedDataBackupUI;
 
 namespace AutomatedDataBackup
 {
-    class BackupScheduler
+    public class BackupScheduler
     {
         private System.Timers.Timer _timer;
         private BackupService _backupService;
